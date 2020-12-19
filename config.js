@@ -17,6 +17,7 @@ const config = {
     },
     dbfile: process.env.DB_FILE,
     chatdb: process.env.CHAR_FILE,
+    bardb: process.env.BAR_FILE,
     server: process.env.SERVER_URL
 }
 
