@@ -17,7 +17,8 @@ const mapedBarData = (messages) => {
       if (
         string.trim().toLowerCase().includes("водій") ||
         string.trim().toLowerCase().includes("водитель") ||
-        string.trim().toLowerCase().includes("водиель")
+        string.trim().toLowerCase().includes("водиель") ||
+        string.trim().toLowerCase().includes("водії")
       ) {
         if (string.length < 50) role = "driver";
         return;
@@ -37,26 +38,36 @@ const mapedBarData = (messages) => {
       if (
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фастівкиїв") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фастовкиїв") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фастівкиев") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фаствкиев") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фастовкиев")
@@ -68,26 +79,36 @@ const mapedBarData = (messages) => {
       if (
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("київфастів") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("київфастов") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("київфаств") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("киевфастов") ||
         string
           .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("киевфаств")
