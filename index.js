@@ -5,7 +5,7 @@ const socketIo = require("socket.io");
 const port = process.env.PORT || 4001;
 const index = require("./routes/index");
 
-const { getChat, chatHistory } = require("./chat-history");
+const { chatHistory } = require("./chat-history");
 const db = require("./utils/db");
 const { checkLogin } = require("./utils/node-storage");
 
@@ -14,7 +14,12 @@ app.use(index);
 
 const server = http.createServer(app);
 
-const io = socketIo(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
 let interval;
 
