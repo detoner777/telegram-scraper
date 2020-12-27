@@ -38,11 +38,19 @@ const mapedBarData = (messages) => {
       if (
         string
           .replace(/\-/g, "")
+          .replace(/\-/g, "")
           .replace(/\↔/g, "")
           .replace(/\->/g, "")
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фастівкиїв") ||
+          string
+          .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .includes("фастівкиїв.") ||
         string
           .replace(/\-/g, "")
           .replace(/\↔/g, "")
@@ -50,6 +58,13 @@ const mapedBarData = (messages) => {
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("фастовкиїв") ||
+          string
+          .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .includes("фастовкиїв.") ||
         string
           .replace(/\-/g, "")
           .replace(/\↔/g, "")
@@ -84,6 +99,13 @@ const mapedBarData = (messages) => {
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("київфастів") ||
+          string
+          .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .includes("київфастів.") ||
         string
           .replace(/\-/g, "")
           .replace(/\↔/g, "")
@@ -91,6 +113,13 @@ const mapedBarData = (messages) => {
           .toLowerCase()
           .replace(/\s+/g, "")
           .includes("київфастов") ||
+          string
+          .replace(/\-/g, "")
+          .replace(/\↔/g, "")
+          .replace(/\->/g, "")
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .includes("київфастов.") ||
         string
           .replace(/\-/g, "")
           .replace(/\↔/g, "")

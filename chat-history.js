@@ -45,6 +45,7 @@ const chatHistory = async (chat) => {
     if (messages.length > 0) {
       await db.updateLastMsgId(messages[0].id);
       const mapedMessages = mapedBarData(messages);
+      console.log(mapedMessages)
       await db.updateChatBar(mapedMessages);
     }
     history = null;
