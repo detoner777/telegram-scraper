@@ -10,6 +10,10 @@ function App() {
     socket.on("FromAPI", (data) => {
       setResponse(data);
     });
+    socket.on("chatBar", (data) => {
+      console.log(data);
+    });
+
     return () => socket.disconnect();
   }, []);
 

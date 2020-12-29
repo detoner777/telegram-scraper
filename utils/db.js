@@ -37,12 +37,23 @@ async function updateChatBar(num) {
   try {
     const work = await writeFile(
       {
-        lastMsgId: num,
+        data: num,
       },
       BARDB
     );
   } catch (err) {
     console.log("error, couldnt save to file " + err);
+  }
+}
+
+async function getChatBar() {
+  try {
+    const readFile = await readDb(BARDB);
+    const file = JSON.parse(readFile);
+    return file;
+  } catch (err) {
+    console.log(err);
+    return false;
   }
 }
 
@@ -88,6 +99,7 @@ module.exports = {
   updateLastMsgId,
   getLastMsgId,
   getChat,
+  getChatBar,
   updateChatBar,
   updateChat,
 };

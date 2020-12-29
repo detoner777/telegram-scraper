@@ -1,6 +1,5 @@
 const express = require("express");
 const http = require("http");
-const socketIo = require("socket.io");
 
 const port = process.env.PORT || 4001;
 const index = require("./routes/index");
@@ -28,7 +27,9 @@ io.on("connection", (socket) => {
   if (interval) {
     clearInterval(interval);
   }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
+
+  interval = setInterval(() => start(socket), 10000);
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     clearInterval(interval);
@@ -48,7 +49,7 @@ const runChutHistory = async (chat) => {
   await chatHistory(chat);
 };
 
-const start = async () => {
+const start = async (socket) => {
   await checkLogin();
 
   let chat = await db.getChat();
@@ -57,10 +58,10 @@ const start = async () => {
     await db.updateChat(chat);
   }
 
-  let timerId = setTimeout(function tick() {
-    runChutHistory(chat);
-    timerId = setTimeout(tick, 30000);
-  }, 2000);
+  // let timerId = setTimeout(function tick() {
+  runChutHistory(chat);
+  let chatBar = await db.getChatBar();
+  //   timerId = setTimeout(tick, 30000);
+  // }, 2000);
+  socket.emit("chatBar", chatBar);
 };
-
-start();
