@@ -17,6 +17,12 @@ function App() {
     return () => socket.disconnect();
   }, []);
 
+  useEffect(() => {
+    fetch(`${ENDPOINT}/get-bar-chat`)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <p>
       It's <time dateTime={response}>{response}</time>
