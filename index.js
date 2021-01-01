@@ -28,19 +28,13 @@ io.on("connection", (socket) => {
     clearInterval(interval);
   }
 
-  interval = setInterval(() => start(socket), 10000);
+  interval = setInterval(() => startScraper(socket), 10000);
 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
     clearInterval(interval);
   });
 });
-
-const getApiAndEmit = (socket) => {
-  const response = new Date();
-  // Emitting a new message. Will be consumed by the client
-  socket.emit("FromAPI", response);
-};
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -49,19 +43,16 @@ const runChutHistory = async (chat) => {
   await chatHistory(chat);
 };
 
-const start = async (socket) => {
+const startScraper = async (socket) => {
   await checkLogin();
 
-  let chat = await db.getChat();
+  const chat = await db.getChat();
 
   if (!chat) {
     await db.updateChat(chat);
   }
 
-  // let timerId = setTimeout(function tick() {
   runChutHistory(chat);
-  let chatBar = await db.getChatBar();
-  //   timerId = setTimeout(tick, 30000);
-  // }, 2000);
+  const chatBar = await db.getChatBar();
   socket.emit("chatBar", chatBar);
 };

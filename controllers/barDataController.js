@@ -1,11 +1,9 @@
-const path = require("path");
-const fs = require("fs");
+const db = require("../utils/db");
 
-const rawdata = fs.readFileSync(
-  path.resolve(__dirname, "../", "storage", "bar.json")
-);
-const barData = JSON.parse(rawdata);
+const getChatBar = async () => {
+  return await db.getChatBar();
+};
 
 exports.get = function (req, res) {
-  res.send(barData).status(200);
+  getChatBar().then((response) => res.send(response).status(200));
 };
