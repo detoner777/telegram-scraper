@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abdhass/telegram-scraper.git"
   },
-  "author": "abdhass",
+  "author": "detoner",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^6.0.0",

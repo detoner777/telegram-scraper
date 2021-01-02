@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  scraper-app:
+    build: '.'
+    env_file:
+      - '.env'
+    tty: true
+    stdin_open: true
+    ports:
+      - '3006:3006'
