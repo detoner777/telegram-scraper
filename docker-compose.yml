@@ -8,4 +8,4 @@ services:
     tty: true
     stdin_open: true
     ports:
-      - '3006:3006'
+      - '4001:4001'

@@ -1,5 +1,6 @@
 const express = require("express");
 const http = require("http");
+const path = require("path");
 
 const port = process.env.PORT || 4001;
 const index = require("./routes/index");
@@ -10,12 +11,17 @@ const { checkLogin } = require("./utils/node-storage");
 
 const app = express();
 app.use(index);
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 const server = http.createServer(app);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3006",
+    origin: "http://localhost:3006" || "http://localhost:4001",
     methods: ["GET", "POST"],
   },
 });
