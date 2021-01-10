@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import socketIOClient from "socket.io-client";
 // const ENDPOINT = "http://127.0.0.1:4001";
-const ENDPOINT = "https://go-together-fastov.herokuapp.com/";
+const ENDPOINT = "https://127.0.0.1:go-together-fastov.herokuapp.com/";
 
 function App() {
   const [response, setResponse] = useState("");
