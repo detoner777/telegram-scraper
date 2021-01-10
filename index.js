@@ -21,7 +21,10 @@ app.get("*", (req, res) => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3006" || "http://localhost:4001",
+    origin:
+      "http://localhost:3006" ||
+      "http://localhost:4001" ||
+      "https://go-together-fastov.herokuapp.com/",
     methods: ["GET", "POST"],
   },
 });
