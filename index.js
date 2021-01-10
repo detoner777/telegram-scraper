@@ -31,19 +31,29 @@ const io = require("socket.io")(server, {
 
 let interval;
 
-io.on("connection", (socket) => {
-  console.log("New client connected");
-  if (interval) {
-    clearInterval(interval);
+io.on(
+  "connection",
+  {
+    // Send auth token on connection, you will need to DI the Auth service above
+    // 'query': 'token=' + Auth.getToken()
+    path: "/socket.io",
+    transports: ["websocket"],
+    secure: true,
+  },
+  (socket) => {
+    console.log("New client connected");
+    if (interval) {
+      clearInterval(interval);
+    }
+
+    interval = setInterval(() => startScraper(socket), 10000);
+
+    socket.on("disconnect", () => {
+      console.log("Client disconnected");
+      clearInterval(interval);
+    });
   }
-
-  interval = setInterval(() => startScraper(socket), 10000);
-
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-    clearInterval(interval);
-  });
-});
+);
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
 
