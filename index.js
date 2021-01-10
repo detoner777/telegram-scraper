@@ -32,7 +32,6 @@ const io = require("socket.io")(server, {
 let interval;
 
 io.on(
-  "connection",
   {
     // Send auth token on connection, you will need to DI the Auth service above
     // 'query': 'token=' + Auth.getToken()
