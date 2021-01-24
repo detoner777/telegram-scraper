@@ -27,7 +27,7 @@ const io = require("socket.io")(server, {
       "https://go-together-fastov.herokuapp.com",
     methods: ["GET", "POST"],
   },
-  transports: ["websocket"],
+  transports: ["polling", "websocket"],
 });
 
 let interval;
@@ -37,8 +37,7 @@ io.on(
     // Send auth token on connection, you will need to DI the Auth service above
     // 'query': 'token=' + Auth.getToken()
     path: "/socket.io",
-    transports: ['polling', 'websocket'],
-    secure: true,
+    transports: ["polling", "websocket"],
   },
   (socket) => {
     console.log("New client connected");
