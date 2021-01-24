@@ -24,9 +24,10 @@ const io = require("socket.io")(server, {
     origin:
       "http://localhost:3006" ||
       "http://localhost:4001" ||
-      "https://go-together-fastov.herokuapp.com/",
+      "https://go-together-fastov.herokuapp.com",
     methods: ["GET", "POST"],
   },
+  transports: ["websocket"],
 });
 
 let interval;
@@ -36,7 +37,7 @@ io.on(
     // Send auth token on connection, you will need to DI the Auth service above
     // 'query': 'token=' + Auth.getToken()
     path: "/socket.io",
-    transports: ["websocket"],
+    transports: ['polling', 'websocket'],
     secure: true,
   },
   (socket) => {
