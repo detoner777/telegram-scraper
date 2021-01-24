@@ -1,9 +1,12 @@
 const db = require("../utils/db");
 
-const getChatBar = async () => {
-  return await db.getChatBar();
+const getChatBar =  () => {
+  // return await db.getChatBar();
+  const lol = "lol";
+  return lol;
 };
 
 exports.get = function (req, res) {
-  getChatBar().then((response) => res.send(response).status(200));
+  getChatBar()
+  // getChatBar().then((response) => res.send(response).status(200));
 };
